@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landing – Rifas</title>
+
+  <!-- Google Fonts -->
+  <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+  <style>
+  :root{
+    --naranja:#ff7a00;
+    --naranja-osc:#cc6200;
+    --negro:#000000;
+    --blanco:#ffffff;
+    --azul:#0a3d62;
+    --azul-osc:#05253b;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Montserrat",sans-serif;
+    background: var(--negro) url("assets/img/foto2.png") center/contain no-repeat;
+    color:var(--blanco);
+  }
+
+  /* ---------- BARRA SUPERIOR ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;height:70px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 1rem;z-index:5;background:transparent;
+  }
+  .logo{height:150px;width:auto;margin-top:10px}
+  .menu-toggle{width:42px;height:30px;background:none;border:none;cursor:pointer;display:grid;gap:6px}
+  .menu-toggle span{height:4px;border-radius:3px;background:var(--blanco);display:block}
+
+  /* ---------- WHATSAPP FLOTANTE ---------- */
+  .floating-whatsapp{
+    position:fixed;bottom:25px;left:25px;width:65px;height:65px;border-radius:50%;
+    background:#25d366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 12px rgba(0,0,0,.35);animation:bounce 2s infinite;font-size:0;z-index:5;
+  }
+  .floating-whatsapp img{width:60%}
+  @keyframes bounce{
+    0%,20%,50%,80%,100%{transform:translateY(0)}
+    40%{transform:translateY(-12px)}
+    60%{transform:translateY(-8px)}
+  }
+
+  /* ---------- HERO + CARRUSEL ---------- */
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:4rem 1rem 6rem}
+  .swiper{width:100%;max-width:430px;padding-bottom:80px}
+  .swiper-wrapper{cursor:grab}
+  .swiper-slide{width:300px !important;height:auto;display:flex;justify-content:center}
+
+  /* ---------- TARJETA ---------- */
+  .card{
+    background:var(--negro);border-radius:12px;box-shadow:0 12px 24px rgba(0,0,0,.5);
+    overflow:hidden;display:flex;flex-direction:column;max-width:100%;
+  }
+  .card-media{
+  height: 200px;            /* ↓ cambia a 180‑220 px según te guste */
+  overflow: hidden;         /* recorta el excedente */
+}
+
+  .card-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* rellena sin deformar */
+}
+
+ .card-body{
+  padding: 1rem 0.9rem;     /* antes 1.4rem */
+}
+ .card-body h2{
+  font-weight:900;          /* ultra-bold */
+  letter-spacing:.3px;      /* ligero ajuste óptico */
+}
+
+.card-body p,
+.card-body ul,
+.card-body li,
+.card-body .draw,
+.card-body .price {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+  /* info rápida dentro de la tarjeta */
+  .price{font-weight:600;margin-bottom:.6rem;color:var(--naranja)}
+
+  .prizes,.draw-times{
+    list-style:none;margin:0 0 .6rem 0;padding:0;font-size:.9rem;line-height:1.35
+  }
+  .prizes li::before,.draw-times li::before{content:"• ";color:var(--naranja)}
+
+  .draw{font-size:.85rem;font-weight:700;margin-bottom:.3rem;text-transform:uppercase}
+
+  /* BOTONES */
+  .buttons{display:flex;flex-direction:column;gap:.9rem;margin-top:auto}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:.45rem;
+    padding:.9rem 1.2rem;font-weight:600;text-decoration:none;border-radius:60px;transition:.25s;user-select:none;
+     font-weight:800;    
+  }
+  .btn svg{width:18px;height:18px;fill:currentColor}
+  .btn.primary{background:var(--naranja);color:var(--blanco)}
+  .btn.secondary{background:transparent;border:2px solid var(--naranja);color:var(--naranja)}
+  .btn.secondary:hover{background:var(--naranja);color:var(--blanco)}
+
+  /* DETALLES PLEGABLES */
+  .terms{margin-top:.8rem;font-size:.8rem}
+  .terms summary{
+    cursor:pointer;color:var(--naranja);font-weight:700;list-style:none; /* quita triangulito */
+  }
+  .terms p{margin:.4rem 0 0}
+
+  /* ---------- PIE TARJETA ---------- */
+  .card-footer{display:flex;background:var(--negro);padding:.8rem 1rem;align-items:center;gap:1rem}
+  .date{text-align:center}
+  .day{display:block;font-size:2.4rem;font-weight:800;line-height:1}
+  .month{text-transform:uppercase;font-weight:600;letter-spacing:.5px;font-size:.9rem}
+
+  .progress{
+    flex:1;background:var(--azul-osc);padding:.9rem .8rem;color:var(--blanco);
+    display:flex;flex-direction:column;justify-content:center;border-radius:6px
+  }
+  .progress .label{font-size:.8rem;font-weight:700;margin-bottom:.4rem}
+  .bar{height:13px;background:var(--blanco);border-radius:7px;overflow:hidden}
+  .bar span{display:block;height:100%;background:var(--naranja)}
+  .status{margin-top:.5rem;font-size:.8rem;text-transform:uppercase;opacity:.8}
+
+  /* ---------- RESPONSIVE PEQUEÑO ---------- */
+  @media(max-width:380px){
+    .card-body h2{font-size:1.15rem}
+    .swiper-slide{width:260px !important}
+  }
+
+
+  .footer {
+  padding: 2rem 1rem;
+  background: var(--negro);
+  color: var(--blanco);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.footer-links a {
+  color: var(--naranja);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--blanco);
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.social-links img {
+  filter: brightness(0) invert(1); /* blanco sobre fondo negro */
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover img {
+  transform: scale(1.1);
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- WhatsApp -->
+ <a class="floating-whatsapp"
+   href="https://wa.me/584121234567?text=Hola%20quiero%20comprar%20tickets"
+   target="_blank" rel="noopener noreferrer">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg"
+       alt="WhatsApp">
+</a>
+
+  <!-- Header -->
+  <header class="topbar">
+    <img class="logo" src="assets/img/muzzioti.png" alt="Logo Rifas">
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Carrusel -->
+  <section class="hero">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+
+        <!-- ===== SLIDE 1 – Rifa Patrulla 2.0 ===== -->
+        <div class="swiper-slide">
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/img/foto4.png" alt="Rifa Patrulla 2.0">
+            </div>
+
+            <div class="card-body">
+              <h2>RIFA PATRULLA 2.0</h2>
+              <p class="price">Ticket: <strong>130 Bs</strong> (mín. 2)</p>
+
+              <ul class="prizes">
+                <li><strong>1º:</strong> Corsa 2004 2.0 + frías</li>
+                <li><strong>2º:</strong> Moto 0 km</li>
+                <li><strong>3º:</strong> 400 USD</li>
+              </ul>
+
+              <p class="draw">Lotería del Táchira – Súper Gana</p>
+              <ul class="draw-times">
+                <li>1º • 10 pm</li>
+                <li>2º • 4 pm</li>
+                <li>3º • 4 pm (día sig.)</li>
+              </ul>
+
+              <div class="buttons">
+                <!-- Ejemplo dentro de cada tarjeta -->
+<a href="https://wa.me/584249719377?text=Hola%20quiero%20comprar%20tickets"
+   class="btn primary" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17 4H7C5.897 4 5 4.897 5 6v2h14V6c0-1.103-.897-2-2-2zM5 8v2h14V8H5zm0 6h14V12H5v2zm14 2v-2H5v2c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2z"></path></svg>
+  COMPRAR TICKETS
+</a>
+
+                <a href="#verificar" class="btn secondary">
+                  <svg viewBox="0 0 24 24"><path d="M20.292 5.709l-11 11-5-5L5.707 10.29l4.585 4.586 9.293-9.293z"/></svg>
+                  VERIFICAR TICKET
+                </a>
+              </div>
+
+              <details class="terms">
+                <summary>Ver términos y pagos</summary>
+                <p>Si no quieres el Corsa recibes <strong>4 000 USD</strong> por transferencia.</p>
+                <p>Aceptamos: Bolívares, Zelle, Binance.</p>
+                <p>Si no se vende el 75 % de tickets para la fecha pautada, se reprogramará una fecha cercana.</p>
+              </details>
+            </div>
+
+            <div class="card-footer">
+              <div class="date">
+                <span class="day">30</span>
+                <span class="month">JUNIO</span>
+              </div>
+              <div class="progress">
+                <span class="label">QUEDAN 52 %</span>
+                <div class="bar"><span style="width:52%"></span></div>
+                <span class="status">Disponible</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ===== SLIDE 2 (placeholder, cámbialo si quieres) ===== -->
+        <div class="swiper-slide">
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/img/slide2.jpg" alt="Rifa 2">
+            </div>
+            <div class="card-body">
+              <h2>FULL 2.0 + 2000 $</h2>
+              <p class="price">Ticket: <strong>100 Bs</strong></p>
+              <ul class="prizes">
+                <li><strong>1º:</strong> Premio grande</li>
+                <li><strong>2º:</strong> Premio mediano</li>
+                <li><strong>3º:</strong> Premio pequeño</li>
+              </ul>
+              <div class="buttons">
+                <a href="#comprar" class="btn primary">COMPRAR TICKETS</a>
+                <a href="#verificar" class="btn secondary">VERIFICAR TICKET</a>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="date"><span class="day">25</span><span class="month">JUNIO</span></div>
+              <div class="progress"><span class="label">QUEDAN 0 %</span><div class="bar"><span style="width:0%"></span></div><span class="status">Agotado</span></div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ===== SLIDE 3 (placeholder) ===== -->
+        <div class="swiper-slide">
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/img/slide3.jpg" alt="Rifa 3">
+            </div>
+            <div class="card-body">
+              <h2>PROMO FLASH</h2>
+              <p class="price">Ticket: <strong>80 Bs</strong></p>
+              <ul class="prizes">
+                <li><strong>1º:</strong> Premio X</li>
+                <li><strong>2º:</strong> Premio Y</li>
+                <li><strong>3º:</strong> 100 USD</li>
+              </ul>
+              <div class="buttons">
+                <a href="#comprar" class="btn primary">COMPRAR TICKETS</a>
+                <a href="#verificar" class="btn secondary">VERIFICAR TICKET</a>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="date"><span class="day">12</span><span class="month">JULIO</span></div>
+              <div class="progress"><span class="label">QUEDAN 58 %</span><div class="bar"><span style="width:58%"></span></div><span class="status">Disponible</span></div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+  const swiper = new Swiper(".swiper",{
+    effect:"coverflow",
+    grabCursor:true,
+    centeredSlides:true,
+    slidesPerView:"auto",
+    loop:true,
+    coverflowEffect:{rotate:0,stretch:0,depth:220,modifier:1,slideShadows:false}
+  });
+  </script>
+
+  <footer class="footer">
+  <div class="footer-links">
+    <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a>
+    
+    <ul class="social-links">
+      <li>
+        <a href="https://www.instagram.com/rifasjamas/" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram rifasjamas" width="32" height="32" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
