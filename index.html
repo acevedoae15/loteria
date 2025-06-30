@@ -66,7 +66,7 @@
     overflow:hidden;display:flex;flex-direction:column;max-width:100%;
   }
   .card-media{
-  height: 200px;            /* ↓ cambia a 180‑220 px según te guste */
+  height: 160px;            /* ↓ cambia a 180‑220 px según te guste */
   overflow: hidden;         /* recorta el excedente */
 }
 
@@ -186,6 +186,46 @@
 .social-links a:hover img {
   transform: scale(1.1);
 }
+
+
+/* ---------- BOTÓN DEL FOOTER ---------- */
+.btn-ter{
+  background:none;
+  border:none;
+  color:var(--naranja);
+  font:600 1rem/1 "Montserrat",sans-serif;
+  cursor:pointer;
+  transition:color .3s;
+}
+.btn-ter:hover{color:var(--blanco);}
+
+/* ---------- MODAL GENÉRICO ---------- */
+.modal{
+  position:fixed; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.7);
+  visibility:hidden; opacity:0; transition:opacity .25s;
+  z-index:10;
+}
+.modal.open{visibility:visible; opacity:1;}
+
+.modal-content{
+  background:var(--negro);
+  color:var(--blanco);
+  width:90%; max-width:600px;
+  padding:2rem 2.2rem;
+  border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.6);
+  position:relative;
+}
+
+.modal-close{
+  position:absolute; top:.6rem; right:.8rem;
+  background:none; border:none;
+  color:var(--blanco); font-size:2rem; line-height:1;
+  cursor:pointer;
+}
+.modal-close:hover{color:var(--naranja);}
 
   </style>
 </head>
@@ -343,17 +383,63 @@
 
   <footer class="footer">
   <div class="footer-links">
-    <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a>
-    
+    <button class="btn-ter" id="openTerms">Términos y Condiciones</button>
+
     <ul class="social-links">
       <li>
         <a href="https://www.instagram.com/rifasjamas/" target="_blank" rel="noopener">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram rifasjamas" width="32" height="32" />
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg"
+               alt="Instagram rifasjamas" width="32" height="32">
         </a>
       </li>
     </ul>
   </div>
 </footer>
+<!-- Modal Términos -->
+<div class="modal" id="termsModal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="modalTitle">
+    <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+
+    <h3 id="modalTitle">Términos y Condiciones</h3>
+
+    <ol class="terms-list">
+      <li>Los números disponibles para la compra en cada sorteo se indican vía WhatsApp con nuestra tabla de números.</li>
+      <li>Los tickets se enviarán en un lapso de 6 horas hábiles (alto volumen de pagos por procesar).</li>
+      <li>Solo podrán participar personas naturales mayores de 18 años.</li>
+      <li>Los premios deberán retirarse en persona en la ubicación designada para cada sorteo.</li>
+      <li>La compra mínima es de dos tickets; puedes escogerlos en la tabla actualizada.</li>
+      <li>Para reclamar tu premio dispones de 72 horas.</li>
+      <li>Los ganadores aceptan aparecer en el contenido audiovisual del sorteo y entrega de premios (OBLIGATORIO).</li>
+    </ol>
+  </div>
+</div>
+
+
+<script>
+  const openBtn  = document.getElementById('openTerms');
+  const modal    = document.getElementById('termsModal');
+  const closeBtn = modal.querySelector('.modal-close');
+
+  // Abrir modal
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('open');
+  });
+
+  // Cerrar modal con “×”
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('open');
+  });
+
+  // Cerrar haciendo clic fuera del cuadro
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+
+  // Cerrar con Esc
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') modal.classList.remove('open');
+  });
+</script>
 
 </body>
 </html>
