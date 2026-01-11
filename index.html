@@ -92,19 +92,25 @@ logia Luz de la Fraternidad N81
 
 <!-- HERO -->
 <section class="relative min-h-screen flex items-end">
+<!-- Imagen base -->
 <div
-  class="
-    absolute inset-0
-    bg-darkbg
-    bg-no-repeat
-    bg-top
-    md:bg-center
-    bg-cover
-  "
-  style="background-image:
-    linear-gradient(to bottom, rgba(18,26,26,.1), rgba(18,26,26,1)),
-    url('assets/img/logia.jpg');">
+  class="absolute inset-0 bg-top md:bg-center bg-cover"
+  style="background-image: url('assets/img/logia.jpg');">
 </div>
+
+<!-- Capa de luz (maquillaje claro) -->
+<div class="absolute inset-0 bg-white/10"></div>
+
+<!-- Capa de profundidad (contraste para texto) -->
+<div
+  class="absolute inset-0"
+  style="background-image: linear-gradient(
+    to bottom,
+    rgba(18,26,26,0.15),
+    rgba(18,26,26,0.85)
+  );">
+</div>
+
 
 
 
