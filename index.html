@@ -1,175 +1,319 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Resp:. Logia Luz de la Fraternidad N°81 – Oriente de Maturín</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resp:. Logia Luz de la Fraternidad N°81 | REAA</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style-final.css">
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            gold: '#A38B57',
-            darkbg: '#121A1A',
-            surfacedark: '#1B2626'
-          },
-          fontFamily: {
-            display: ['Manrope', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-darkbg text-slate-200 font-display overflow-x-hidden">
+<body>
 
-<!-- NAV -->
-<header class="fixed top-0 w-full z-50 bg-darkbg/80 backdrop-blur border-b border-gold/20">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center gap-4">
-      <img src="assets/img/logo-logia.jpg"
-           class="h-12 w-12 rounded-full border-2 border-gold object-cover">
-      <span class="uppercase tracking-widest text-xs font-bold">
-        Luz de la Fraternidad Nº81
-      </span>
-    </div>
+    <!-- Background Canvas for Particles -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="glow-spot"></div>
 
-    <nav class="hidden md:flex gap-8 text-xs uppercase tracking-widest">
-      <a href="#institucion" class="hover:text-gold">Institución</a>
-      <a href="#historia" class="hover:text-gold">Historia</a>
-      <a href="#tenidas" class="hover:text-gold">Tenidas</a>
-      <a href="#comite" class="hover:text-gold">Comité</a>
-      <a href="#actividades" class="hover:text-gold">Actividades</a>
-      <a href="#contacto" class="hover:text-gold">Contacto</a>
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="Logo" class="logo-img">
+                Luz de la Fraternidad N°81
+            </a>
+            <ul class="nav-links">
+                <li><a href="#institucion">Institución</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#tenidas">Tenidas</a></li>
+                <li><a href="#comite">Comité Familiar</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#tenidas" class="btn btn-primary nav-cta">Ver Tenidas</a>
+            <button class="mobile-toggle"><i data-lucide="menu"></i></button>
+        </div>
     </nav>
-  </div>
-</header>
 
-<!-- HERO -->
-<section class="relative min-h-screen flex items-center pt-28">
-  <div class="absolute inset-0 bg-cover bg-center"
-       style="background-image:url('assets/img/logia.jpg');"></div>
+    <!-- Hero Section -->
+    <section class="hero container">
+        <div class="hero-content animate-on-scroll">
+            <span class="badge">A L∴ G∴ D∴ G∴ A∴ D∴ U∴</span>
+            <h1>Respetable Logia <br><span class="gradient-text">Luz de la Fraternidad N°81</span></h1>
+            <p class="subtitle">Rito Escocés Antiguo y Aceptado • Jurisdicción de la Muy Resp:. Gran Logia de la
+                República de Venezuela</p>
 
-  <!-- Blanco y negro fuerte -->
-  <div class="absolute inset-0 bg-white/70 mix-blend-overlay"></div>
-  <div class="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
+            <div class="hero-buttons">
+                <a href="#institucion" class="btn btn-primary">Conocer la Institución <i data-lucide="arrow-right"
+                        size="16"></i></a>
+                <a href="#tenidas" class="btn btn-secondary">Calendario de Tenidas</a>
+            </div>
+        </div>
 
-  <!-- Degradado -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-darkbg"></div>
+        <div class="hero-3d animate-on-scroll">
+            <div id="canvas-3d"></div>
+        </div>
 
-  <div class="relative max-w-4xl px-6">
-    <span class="uppercase tracking-widest text-xs text-gold">
-      A∴ L∴ G∴ D∴ G∴ A∴ D∴ U∴
-    </span>
-    <h1 class="text-4xl md:text-6xl font-extrabold mt-4 mb-6">
-      Respetable Logia<br>
-      <span class="text-gold">Luz de la Fraternidad Nº81</span>
-    </h1>
-    <p class="text-slate-300 max-w-xl">
-      Rito Escocés Antiguo y Aceptado · Jurisdicción de la Muy Resp:. Gran Logia
-      de la República de Venezuela
-    </p>
-  </div>
+        <div class="hero-stats animate-on-scroll">
+            <div class="stat-item glass">
+                <div class="stat-label">RITUAL</div>
+                <div class="stat-value">REAA</div>
+            </div>
+            <div class="stat-item glass">
+                <div class="stat-label">ORDEN</div>
+                <div class="stat-value">1971</div>
+            </div>
+            <div class="stat-item glass">
+                <div class="stat-label">LUZ</div>
+                <div class="stat-value">81</div>
+            </div>
+            <div class="stat-item glass">
+                <div class="stat-label">VIGOR</div>
+                <div class="stat-value">100%</div>
+            </div>
+        </div>
+    </section>
 
-  <!-- 3D -->
-  <div id="canvas-3d" class="absolute right-0 bottom-0 w-[400px] h-[400px] hidden md:block"></div>
-</section>
+    <!-- Institucion -->
+    <section id="institucion" class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Nuestra Institución</h2>
+            <p>Definición, principios, valores y objetivos fundamentales.</p>
+        </div>
 
-<!-- INSTITUCIÓN -->
-<section id="institucion" class="max-w-6xl mx-auto px-6 py-24">
-  <h2 class="text-3xl font-bold mb-12 text-center">Nuestra Institución</h2>
+        <div class="grid-3">
+            <div class="card glass animate-on-scroll">
+                <div class="card-icon"><i data-lucide="shield"></i></div>
+                <h3>Principios</h3>
+                <p>Fraternidad, respeto y rectitud como base inquebrantable de nuestro trabajo masónico diario.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <div class="card-icon"><i data-lucide="award"></i></div>
+                <h3>Valores</h3>
+                <p>Integridad, disciplina, tolerancia y servicio a la humanidad y a nuestros hermanos.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <div class="card-icon"><i data-lucide="user-check"></i></div>
+                <h3>Objetivos</h3>
+                <p>Formación del carácter y mejora continua del individuo a través del estudio simbólico.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <div class="card-icon"><i data-lucide="scroll"></i></div>
+                <h3>Tradición REAA</h3>
+                <p>Fieles observantes del Rito Escocés Antiguo y Aceptado, con rigor histórico y filosófico.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <div class="card-icon"><i data-lucide="users"></i></div>
+                <h3>Comunidad</h3>
+                <p>Vínculo fraternal indisoluble y apoyo mutuo constante entre todos los miembros del taller.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <div class="card-icon"><i data-lucide="lock"></i></div>
+                <h3>Discreción</h3>
+                <p>Respeto absoluto por la reserva masónica y la vida interior de nuestra augusta institución.</p>
+            </div>
+        </div>
+    </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-    <div class="card">
-      <h3>Principios</h3>
-      <p>Fraternidad, respeto y rectitud como base inquebrantable.</p>
-    </div>
-    <div class="card">
-      <h3>Valores</h3>
-      <p>Integridad, disciplina y servicio a la humanidad.</p>
-    </div>
-    <div class="card">
-      <h3>Objetivos</h3>
-      <p>Formación del carácter a través del estudio simbólico.</p>
-    </div>
-  </div>
-</section>
+    <!-- Historia -->
+    <section id="historia" class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Historia</h2>
+            <p>Desde 1971 hasta la actualidad, un legado de luz ininterrumpido.</p>
+        </div>
 
-<!-- HISTORIA -->
-<section id="historia" class="bg-surfacedark py-24">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-12 text-center">Historia</h2>
-    <ul class="space-y-8">
-      <li><strong class="text-gold">1971</strong> – Fundación y constitución.</li>
-      <li><strong class="text-gold">1985</strong> – Consolidación institucional.</li>
-      <li><strong class="text-gold">Actualidad</strong> – Trabajo ininterrumpido.</li>
-    </ul>
-  </div>
-</section>
+        <div class="timeline animate-on-scroll">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="timeline-year">1971</span>
+                <h3>Fundación y Constitución</h3>
+                <p>Orígenes y carta patente constitutiva bajo la jurisdicción de la Gran Logia de Venezuela.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="timeline-year">1985</span>
+                <h3>Consolidación</h3>
+                <p>Fortalecimiento de las columnas con miembros de las logias "Francisco Salias" N°81 y "José Plaz
+                    Ortiz" N°103.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="timeline-year">2000</span>
+                <h3>Nuevo Milenio</h3>
+                <p>Adaptación a los nuevos tiempos sin perder la esencia de la tradición iniciática.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="timeline-year">Actualidad</span>
+                <h3>Trabajo Continuo</h3>
+                <p>Regularmente constituida, sesionando en el Gran Templo Masónico, Monumento Histórico Nacional
+                    (Jesuitas a Maturín).</p>
+            </div>
+        </div>
+    </section>
 
-<!-- TENIDAS -->
-<section id="tenidas" class="max-w-6xl mx-auto px-6 py-24">
-  <h2 class="text-3xl font-bold mb-12 text-center">Tenidas</h2>
-  <table class="w-full text-sm border-collapse">
-    <thead>
-      <tr class="border-b border-gold/30">
-        <th class="py-3 text-left">Fecha</th>
-        <th class="py-3 text-left">Tipo</th>
-        <th class="py-3 text-left">Tema</th>
-      </tr>
-    </thead>
-    <tbody id="tenidas-body"></tbody>
-  </table>
-</section>
+    <!-- Tenidas -->
+    <section id="tenidas" class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Tenidas del Semestre</h2>
+            <p>Cronograma de trabajos y fechas relevantes para la membresía.</p>
+        </div>
 
-<!-- COMITÉ -->
-<section id="comite" class="bg-surfacedark py-24">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-12 text-center">Comité Familiar y AJEF</h2>
-    <p class="text-slate-300 text-center max-w-3xl mx-auto">
-      Integración familiar, formación ética y desarrollo de la juventud.
-    </p>
-  </div>
-</section>
+        <div class="grid-3 animate-on-scroll" style="margin-bottom: 3rem;">
+            <div class="card glass" style="text-align: center; align-items: center;">
+                <div class="card-icon"><i data-lucide="calendar"></i></div>
+                <h3>Tenidas Ordinarias</h3>
+                <p>Jueves 7:00 PM</p>
+            </div>
+            <div class="card glass" style="text-align: center; align-items: center;">
+                <div class="card-icon"><i data-lucide="book-open"></i></div>
+                <h3>Instrucción</h3>
+                <p>Mensual (Ver calendario)</p>
+            </div>
+            <div class="card glass" style="text-align: center; align-items: center;">
+                <div class="card-icon"><i data-lucide="star"></i></div>
+                <h3>Efemérides</h3>
+                <p>Fechas Magnas</p>
+            </div>
+        </div>
 
-<!-- ACTIVIDADES -->
-<section id="actividades" class="max-w-6xl mx-auto px-6 py-24">
-  <h2 class="text-3xl font-bold mb-12 text-center">Actividades</h2>
-  <div id="actividades-grid" class="grid md:grid-cols-3 gap-8"></div>
-</section>
+        <div class="table-container glass animate-on-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="20%">Fecha</th>
+                        <th width="30%">Tipo</th>
+                        <th>Tema / Descripción</th>
+                    </tr>
+                </thead>
+                <tbody id="tenidas-body">
+                    <!-- JS fills this -->
+                </tbody>
+            </table>
+            <p style="padding: 1rem; font-size: 0.8rem; color: var(--text-secondary);">* Información sujeta a
+                confirmación interna. Solo para miembros regulares.</p>
+        </div>
+    </section>
 
-<!-- CONTACTO -->
-<section id="contacto" class="bg-surfacedark py-24">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">Contacto</h2>
-    <p class="text-slate-400">
-      Gran Templo Masónico · Jesuitas a Maturín · Venezuela
-    </p>
-  </div>
-</section>
+    <!-- Comite -->
+    <section id="comite" class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Comité Familiar y Ajefismo</h2>
+            <p>Fortaleciendo lazos familiares y el desarrollo de la juventud.</p>
+        </div>
 
-<footer class="border-t border-gold/20 py-10 text-center text-xs text-slate-500">
-  © 2026 — Trabajo, Silencio y Perseverancia
-</footer>
+        <div class="grid-2">
+            <div class="card glass animate-on-scroll">
+                <h3><i data-lucide="heart" style="margin-right: 10px; color: var(--accent-purple);"></i> Integración
+                    Familiar</h3>
+                <p>Actividades diseñadas para integrar a las familias en la vida social de la logia, promoviendo la
+                    unidad y el apoyo mutuo.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <h3><i data-lucide="zap" style="margin-right: 10px; color: var(--accent-purple);"></i> AJEF</h3>
+                <p>Asociación de Jóvenes Esperanza de la Fraternidad. Fomento de valores morales, intelectuales y
+                    físicos en la juventud.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <h3><i data-lucide="users" style="margin-right: 10px; color: var(--accent-purple);"></i> Formación Ética
+                </h3>
+                <p>Talleres y espacios de discusión para hijos de masones y jóvenes de la comunidad interesados en el
+                    crecimiento personal.</p>
+            </div>
+            <div class="card glass animate-on-scroll">
+                <h3><i data-lucide="smile" style="margin-right: 10px; color: var(--accent-purple);"></i> Eventos
+                    Sociales</h3>
+                <p>Celebraciones, paseos y ágapes blancos para compartir en armonía fuera de los trabajos rituales.</p>
+            </div>
+        </div>
+    </section>
 
-<script src="assets/js/app-final.js"></script>
+    <!-- Actividades -->
+    <section id="actividades" class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Actividades</h2>
+            <p>Planificación semestral de eventos, proyectos y beneficencia.</p>
+        </div>
+        <div id="actividades-grid" class="grid-3">
+            <!-- JS fills this -->
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Contacto</h2>
+            <p>Estamos ubicados en el corazón histórico de Caracas.</p>
+        </div>
+
+        <div class="contact-grid glass" style="padding: 3rem; border-radius: 16px;">
+            <div class="animate-on-scroll">
+                <h3>Ubicación</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    Gran Templo Masónico<br>
+                    Calle Este 3, de Jesuitas a Maturín, N° 5<br>
+                    Or:. de Caracas, Venezuela.
+                </p>
+
+                <h3>Correo</h3>
+                <p style="color: var(--text-secondary);">secretaria@luzdelafraternidad81.com (Demo)</p>
+            </div>
+
+            <form class="animate-on-scroll" action="mailto:demo@example.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" class="form-control" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" class="form-control" placeholder="tucorreo@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea class="form-control" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Luz de la Fraternidad N°81</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Rito Escocés Antiguo y Aceptado</p>
+                </div>
+                <div>
+                    <h4>Enlaces</h4>
+                    <p><a href="#" style="color: var(--text-secondary); text-decoration: none;">Inicio</a></p>
+                    <p><a href="#contacto" style="color: var(--text-secondary); text-decoration: none;">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Respetable Logia Luz de la Fraternidad N°81. Todos los derechos reservados.</p>
+                <p>Sitio institucional informativo. No divulgamos información ritual privada.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Scripts -->
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
+
 </html>
