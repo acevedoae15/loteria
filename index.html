@@ -20,7 +20,6 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style-final.css">
 
-  <!-- Tailwind config -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -47,11 +46,9 @@
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
     <div class="flex items-center gap-4">
-      <img
-        src="assets/img/WhatsApp Image 2026-01-08 at 7.33.25 PM.jpeg"
-        class="h-12 w-12 rounded-full border-2 border-gold object-cover"
-        alt="Logia Luz de la Fraternidad Nº81"
-      >
+      <img src="assets/img/WhatsApp Image 2026-01-08 at 7.33.25 PM.jpeg"
+           class="h-12 w-12 rounded-full border-2 border-gold object-cover"
+           alt="Logia Luz de la Fraternidad Nº81">
       <span class="uppercase tracking-widest text-xs font-bold">
         Luz de la Fraternidad Nº81
       </span>
@@ -72,20 +69,13 @@
 <!-- ================= HERO ================= -->
 <section class="relative min-h-screen flex items-center pt-28">
 
-  <!-- Imagen -->
-  <div
-    class="absolute inset-0 bg-cover bg-center"
-    style="background-image:url('assets/img/tenidas.jpeg');">
-  </div>
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image:url('assets/img/tenidas.jpeg');"></div>
 
-  <!-- Blanco y negro + contraste -->
   <div class="absolute inset-0 bg-white/70 mix-blend-overlay"></div>
   <div class="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
-
-  <!-- Degradado -->
   <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-darkbg"></div>
 
-  <!-- Contenido -->
   <div class="relative max-w-4xl px-6">
     <span class="uppercase tracking-widest text-xs text-gold">
       A∴ L∴ G∴ D∴ G∴ A∴ D∴ U∴
@@ -101,95 +91,63 @@
       de la República de Venezuela
     </p>
   </div>
-
-  <!-- 3D -->
-  <div
-    id="canvas-3d"
-    class="absolute right-0 bottom-0 w-[400px] h-[400px] hidden md:block">
-  </div>
-</section>
-
-<!-- ================= INSTITUCIÓN ================= -->
-<section id="institucion" class="max-w-6xl mx-auto px-6 py-24">
-  <h2 class="text-3xl font-bold mb-12 text-center">Nuestra Institución</h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-    <div class="card">
-      <h3>Principios</h3>
-      <p>Fraternidad, respeto y rectitud como base inquebrantable.</p>
-    </div>
-
-    <div class="card">
-      <h3>Valores</h3>
-      <p>Integridad, disciplina y servicio a la humanidad.</p>
-    </div>
-
-    <div class="card">
-      <h3>Objetivos</h3>
-      <p>Formación del carácter a través del estudio simbólico.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= HISTORIA ================= -->
-<section id="historia" class="bg-surfacedark py-24">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-12 text-center">Historia</h2>
-
-    <ul class="space-y-8">
-      <li><strong class="text-gold">1971</strong> – Fundación y constitución.</li>
-      <li><strong class="text-gold">1985</strong> – Consolidación institucional.</li>
-      <li><strong class="text-gold">Actualidad</strong> – Trabajo ininterrumpido.</li>
-    </ul>
-  </div>
 </section>
 
 <!-- ================= TENIDAS ================= -->
 <section id="tenidas" class="max-w-6xl mx-auto px-6 py-24">
   <h2 class="text-3xl font-bold mb-12 text-center">Tenidas</h2>
 
-  <table class="w-full text-sm border-collapse">
-    <thead>
-      <tr class="border-b border-gold/30">
-        <th class="py-3 text-left">Fecha</th>
-        <th class="py-3 text-left">Tipo</th>
-        <th class="py-3 text-left">Tema</th>
-      </tr>
-    </thead>
-    <tbody id="tenidas-body"></tbody>
-  </table>
-</section>
-
-<!-- ================= COMITÉ ================= -->
-<section id="comite" class="bg-surfacedark py-24">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-12">Comité Familiar y AJEF</h2>
-    <p class="text-slate-300 max-w-3xl mx-auto">
-      Integración familiar, formación ética y desarrollo de la juventud.
-    </p>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b border-gold/30 text-gold">
+          <th class="py-3 text-left">Fecha</th>
+          <th class="py-3 text-left">Tipo</th>
+          <th class="py-3 text-left">Tema</th>
+        </tr>
+      </thead>
+      <tbody id="tenidas-body" class="divide-y divide-gold/10"></tbody>
+    </table>
   </div>
-</section>
 
-<!-- ================= ACTIVIDADES ================= -->
-<section id="actividades" class="max-w-6xl mx-auto px-6 py-24">
-  <h2 class="text-3xl font-bold mb-12 text-center">Actividades</h2>
-  <div id="actividades-grid" class="grid md:grid-cols-3 gap-8"></div>
-</section>
-
-<!-- ================= CONTACTO ================= -->
-<section id="contacto" class="bg-surfacedark py-24">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">Contacto</h2>
-    <p class="text-slate-400">
-      Gran Templo Masónico · Jesuitas a Maturín · Venezuela
-    </p>
-  </div>
+  <p class="text-xs text-slate-500 mt-6 italic">
+    * Información sujeta a confirmación interna. Solo para miembros regulares.
+  </p>
 </section>
 
 <footer class="border-t border-gold/20 py-10 text-center text-xs text-slate-500">
   © 2026 — Trabajo, Silencio y Perseverancia
 </footer>
 
-<script src="assets/js/app-final.js"></script>
+<!-- ================= TENIDAS DATA ================= -->
+<script>
+  const tenidas = [
+    { fecha: "2024-02-15", tipo: "Tenida Ordinaria", tema: "Lectura y aprobación de actas" },
+    { fecha: "2024-02-22", tipo: "Tenida de Instrucción", tema: "Simbolismo del Primer Grado" },
+    { fecha: "2024-02-29", tipo: "Tenida Ordinaria", tema: "Discusión administrativa" },
+    { fecha: "2024-03-07", tipo: "Tenida Magna de Iniciación", tema: "Recepción de profanos" },
+    { fecha: "2024-03-14", tipo: "Tenida Ordinaria", tema: "Trabajos de arquitectura" },
+    { fecha: "2024-03-21", tipo: "Tenida de Instrucción", tema: "Historia del REAA en Venezuela" },
+    { fecha: "2024-04-04", tipo: "Tenida Ordinaria", tema: "Elecciones de dignidades" },
+    { fecha: "2024-04-11", tipo: "Tenida Solemne", tema: "Aniversario de la Logia" },
+    { fecha: "2024-04-18", tipo: "Tenida Ordinaria", tema: "Instalación de Oficiales" },
+    { fecha: "2024-05-02", tipo: "Tenida de Instrucción", tema: "Derecho Masónico" },
+    { fecha: "2024-05-09", tipo: "Tenida Ordinaria", tema: "Beneficencia y Hospitalaria" },
+    { fecha: "2024-05-16", tipo: "Tenida Blanca", tema: "Conferencia abierta a familia" }
+  ];
+
+  const tbody = document.getElementById("tenidas-body");
+
+  tenidas.forEach(t => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td class="py-3">${t.fecha}</td>
+      <td class="py-3">${t.tipo}</td>
+      <td class="py-3">${t.tema}</td>
+    `;
+    tbody.appendChild(row);
+  });
+</script>
+
 </body>
 </html>
