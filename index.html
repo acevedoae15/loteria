@@ -14,7 +14,7 @@
   <!-- Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
-  <!-- Three.js -->
+  <!-- Three.js (opcional) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- Custom CSS -->
@@ -42,7 +42,7 @@
 <body class="bg-darkbg text-slate-200 font-display overflow-x-hidden">
 
 <!-- NAV -->
-<header class="fixed top-0 w-full z-50 bg-darkbg/80 backdrop-blur border-b border-gold/20">
+<header class="fixed top-0 w-full z-50 bg-darkbg/90 backdrop-blur border-b border-gold/20">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <div class="flex items-center gap-4">
       <img src="assets/img/WhatsApp Image 2026-01-08 at 7.33.25 PM.jpeg"
@@ -56,13 +56,13 @@
     </button>
 
     <!-- Nav principal -->
-    <nav id="mobile-menu" class="hidden md:flex gap-8 text-xs uppercase tracking-widest flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-darkbg md:bg-transparent border-t md:border-0 border-gold/20 md:border-none">
-      <a href="#institucion" class="py-2 px-6 hover:text-gold">Institución</a>
-      <a href="#historia" class="py-2 px-6 hover:text-gold">Historia</a>
-      <a href="#tenidas" class="py-2 px-6 hover:text-gold">Tenidas</a>
-      <a href="#comite" class="py-2 px-6 hover:text-gold">Comité</a>
-      <a href="#actividades" class="py-2 px-6 hover:text-gold">Actividades</a>
-      <a href="#contacto" class="py-2 px-6 hover:text-gold">Contacto</a>
+    <nav id="mobile-menu" class="hidden md:flex gap-8 text-xs uppercase tracking-widest flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-darkbg md:bg-transparent border-t md:border-0 border-gold/20 shadow-md md:shadow-none">
+      <a href="#institucion" class="py-3 px-6 hover:text-gold border-b border-gold/20 md:border-none">Institución</a>
+      <a href="#historia" class="py-3 px-6 hover:text-gold border-b border-gold/20 md:border-none">Historia</a>
+      <a href="#tenidas" class="py-3 px-6 hover:text-gold border-b border-gold/20 md:border-none">Tenidas</a>
+      <a href="#comite" class="py-3 px-6 hover:text-gold border-b border-gold/20 md:border-none">Comité</a>
+      <a href="#actividades" class="py-3 px-6 hover:text-gold border-b border-gold/20 md:border-none">Actividades</a>
+      <a href="#contacto" class="py-3 px-6 hover:text-gold md:border-none">Contacto</a>
     </nav>
   </div>
 </header>
@@ -70,11 +70,10 @@
 <!-- HERO -->
 <section class="relative min-h-screen flex items-center pt-28">
 
-  <!-- Imagen de fondo con blanco y negro y contraste fuerte -->
+  <!-- Imagen de fondo con efecto editorial -->
   <div class="absolute inset-0 bg-cover bg-center grayscale contrast-125 brightness-110"
        style="background-image:url('assets/img/tenidas.jpeg');"></div>
 
-  <!-- Capas de efecto editorial -->
   <div class="absolute inset-0 bg-white/70 mix-blend-overlay"></div>
   <div class="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-darkbg"></div>
@@ -231,6 +230,8 @@
   © 2026 — Trabajo, Silencio y Perseverancia
 </footer>
 
+<script src="assets/js/app-final.js"></script>
+
 <script>
   // Toggle menú móvil
   const btn = document.getElementById('mobile-menu-btn');
@@ -240,6 +241,5 @@
   });
 </script>
 
-<script src="assets/js/app-final.js"></script>
 </body>
 </html>
