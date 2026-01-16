@@ -2,13 +2,23 @@
 <html lang="es" class="dark">
 <head>
   <meta charset="UTF-8">
-  <title>Respetable Logia Simbólica – Oriente de Maturín</title>
+  <title>Resp:. Logia Luz de la Fraternidad N°81 – Oriente de Maturín</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style-final.css">
 
   <script>
     tailwind.config = {
@@ -16,7 +26,6 @@
       theme: {
         extend: {
           colors: {
-            primary: '#243C3B',
             gold: '#A38B57',
             darkbg: '#121A1A',
             surfacedark: '#1B2626'
@@ -28,175 +37,139 @@
       }
     }
   </script>
-
-  <style>
-    body { font-family: 'Manrope', sans-serif; }
-    .editorial-shadow { box-shadow: 0 20px 50px rgba(0,0,0,.35); }
-    .gold-line { height:1px; background:#A38B57; width:60px; }
-  </style>
 </head>
 
-<body class="bg-white dark:bg-darkbg text-slate-800 dark:text-slate-200">
+<body class="bg-darkbg text-slate-200 font-display overflow-x-hidden">
 
 <!-- NAV -->
-<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur border-b border-gold/20">
+<header class="fixed top-0 w-full z-50 bg-darkbg/80 backdrop-blur border-b border-gold/20">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-4">
-  <div class="relative">
-    <img 
-      src="assets/img/WhatsApp Image 2026-01-08 at 7.33.25 PM.jpeg"
-      alt="Logia Oriente de Maturín"
-      class="
-        h-14 w-14
-        rounded-full
-        object-cover
-        bg-darkbg
-        border-2 border-gold
-        shadow-lg
-        ring-1 ring-gold/30
-      "
-    >
-  </div>
+    <div class="flex items-center gap-4">
+      <img src="assets/img/logo-logia.jpg"
+           class="h-12 w-12 rounded-full border-2 border-gold object-cover">
+      <span class="uppercase tracking-widest text-xs font-bold">
+        Luz de la Fraternidad Nº81
+      </span>
+    </div>
 
-  <span class="uppercase tracking-widest text-xs font-bold leading-tight">
-logia Luz de la Fraternidad N81
-  </span>
-</div>
-
-
-
-    <!-- Desktop Menu -->
     <nav class="hidden md:flex gap-8 text-xs uppercase tracking-widest">
+      <a href="#institucion" class="hover:text-gold">Institución</a>
       <a href="#historia" class="hover:text-gold">Historia</a>
-      <a href="#principios" class="hover:text-gold">tenidas</a>
-      <a href="#autoridades" class="hover:text-gold">Comité Familiar y Ajefismo</a>
-      <a href="#beneficencia" class="hover:text-gold">Eventos</a>
-    </nav>
-
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-gold">
-      <span class="material-symbols-outlined text-3xl">menu</span>
-    </button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-darkbg border-t border-gold/20">
-    <nav class="flex flex-col px-6 py-6 gap-4 text-xs uppercase tracking-widest">
-      <a href="#historia" class="hover:text-gold">Historia</a>
-      <a href="#principios" class="hover:text-gold">tenidas</a>
-      <a href="#autoridades" class="hover:text-gold">Comité Familiar y Ajefismo</a>
-      <a href="#beneficencia" class="hover:text-gold">Eventos</a>
+      <a href="#tenidas" class="hover:text-gold">Tenidas</a>
+      <a href="#comite" class="hover:text-gold">Comité</a>
+      <a href="#actividades" class="hover:text-gold">Actividades</a>
+      <a href="#contacto" class="hover:text-gold">Contacto</a>
     </nav>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="relative min-h-screen flex items-end">
-<div class="absolute inset-0 bg-darkbg overflow-hidden">
+<section class="relative min-h-screen flex items-center pt-28">
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image:url('assets/img/logia.jpg');"></div>
 
-  <!-- Imagen -->
-  <div
-    class="absolute inset-0 bg-cover bg-center"
-    style="background-image:url('assets/img/logia.jpg');">
-  </div>
+  <!-- Blanco y negro fuerte -->
+  <div class="absolute inset-0 bg-white/70 mix-blend-overlay"></div>
+  <div class="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
 
-  <!-- Capa blanco y negro + contraste -->
-  <div class="absolute inset-0 bg-white/60 mix-blend-overlay"></div>
+  <!-- Degradado -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-darkbg"></div>
 
-  <!-- Capa de contraste fuerte -->
-  <div class="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
-
-  <!-- Degradado editorial -->
-  <div
-    class="absolute inset-0"
-    style="background:
-      linear-gradient(
-        to bottom,
-        rgba(18,26,26,.05),
-        rgba(18,26,26,1)
-      );">
-  </div>
-
-</div>
-
-
-
-
-
-  <div class="relative max-w-4xl px-6 md:px-10 pb-20 md:pb-32">
-    <div class="gold-line mb-6"></div>
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-      logia  Luz de la Fraternidad N81<br>
-      <span class="text-gold">Luz del Oriente de Maturín</span>
+  <div class="relative max-w-4xl px-6">
+    <span class="uppercase tracking-widest text-xs text-gold">
+      A∴ L∴ G∴ D∴ G∴ A∴ D∴ U∴
+    </span>
+    <h1 class="text-4xl md:text-6xl font-extrabold mt-4 mb-6">
+      Respetable Logia<br>
+      <span class="text-gold">Luz de la Fraternidad Nº81</span>
     </h1>
-    <p class="uppercase tracking-widest text-[10px] sm:text-xs text-slate-300">
-     Regularmente constituida e ininterrumpidamente activa desde el 18 de julio de 1971
+    <p class="text-slate-300 max-w-xl">
+      Rito Escocés Antiguo y Aceptado · Jurisdicción de la Muy Resp:. Gran Logia
+      de la República de Venezuela
     </p>
+  </div>
+
+  <!-- 3D -->
+  <div id="canvas-3d" class="absolute right-0 bottom-0 w-[400px] h-[400px] hidden md:block"></div>
+</section>
+
+<!-- INSTITUCIÓN -->
+<section id="institucion" class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Nuestra Institución</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="card">
+      <h3>Principios</h3>
+      <p>Fraternidad, respeto y rectitud como base inquebrantable.</p>
+    </div>
+    <div class="card">
+      <h3>Valores</h3>
+      <p>Integridad, disciplina y servicio a la humanidad.</p>
+    </div>
+    <div class="card">
+      <h3>Objetivos</h3>
+      <p>Formación del carácter a través del estudio simbólico.</p>
+    </div>
   </div>
 </section>
 
 <!-- HISTORIA -->
-<section id="historia" class="max-w-6xl mx-auto px-6 md:px-8 py-20 md:py-28">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-    <div>
-      <span class="uppercase tracking-widest text-xs text-gold font-bold">Nuestra Historia</span>
-      <h2 class="text-2xl md:text-3xl font-bold mt-4 mb-6">Jurisdicción y Sede</h2>
-      <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-       Regularmente constituida e ininterrumpidamente activa desde su fundación, la Respetable Logia Luz de la Fraternidad Nº 81 trabaja bajo la jurisdicción de la Muy Respetable Gran Logia de la República de Venezuela.
-      </p>
-    </div>
-
-    <div class="editorial-shadow">
-      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66"
-           class="w-full h-[280px] sm:h-[360px] md:h-[420px] object-cover grayscale hover:grayscale-0 transition">
-    </div>
+<section id="historia" class="bg-surfacedark py-24">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12 text-center">Historia</h2>
+    <ul class="space-y-8">
+      <li><strong class="text-gold">1971</strong> – Fundación y constitución.</li>
+      <li><strong class="text-gold">1985</strong> – Consolidación institucional.</li>
+      <li><strong class="text-gold">Actualidad</strong> – Trabajo ininterrumpido.</li>
+    </ul>
   </div>
 </section>
 
-<!-- PRINCIPIOS -->
-<section id="principios" class="bg-surfacedark py-20 md:py-28">
+<!-- TENIDAS -->
+<section id="tenidas" class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Tenidas</h2>
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="border-b border-gold/30">
+        <th class="py-3 text-left">Fecha</th>
+        <th class="py-3 text-left">Tipo</th>
+        <th class="py-3 text-left">Tema</th>
+      </tr>
+    </thead>
+    <tbody id="tenidas-body"></tbody>
+  </table>
+</section>
+
+<!-- COMITÉ -->
+<section id="comite" class="bg-surfacedark py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12 text-center">Comité Familiar y AJEF</h2>
+    <p class="text-slate-300 text-center max-w-3xl mx-auto">
+      Integración familiar, formación ética y desarrollo de la juventud.
+    </p>
+  </div>
+</section>
+
+<!-- ACTIVIDADES -->
+<section id="actividades" class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Actividades</h2>
+  <div id="actividades-grid" class="grid md:grid-cols-3 gap-8"></div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="bg-surfacedark py-24">
   <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-2xl md:text-3xl font-bold mb-12">Principios Fundamentales</h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-      <div>
-        <span class="material-symbols-outlined text-gold text-4xl mb-4">groups</span>
-        <h3 class="uppercase tracking-widest text-sm font-bold mb-3">Amor Fraternal</h3>
-      </div>
-
-      <div>
-        <span class="material-symbols-outlined text-gold text-4xl mb-4">volunteer_activism</span>
-        <h3 class="uppercase tracking-widest text-sm font-bold mb-3">Socorro</h3>
-      </div>
-
-      <div>
-        <span class="material-symbols-outlined text-gold text-4xl mb-4">verified</span>
-        <h3 class="uppercase tracking-widest text-sm font-bold mb-3">Verdad</h3>
-      </div>
-    </div>
+    <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+    <p class="text-slate-400">
+      Gran Templo Masónico · Jesuitas a Maturín · Venezuela
+    </p>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-darkbg border-t border-gold/20 py-10">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <p class="uppercase tracking-widest text-[10px] text-slate-500 mb-4">
-      Respetable Logia Simbólica – Oriente de Maturín
-    </p>
-    <p class="text-[10px] text-slate-600">
-      © 2026 — Trabajo, Silencio y Perseverancia
-    </p>
-  </div>
+<footer class="border-t border-gold/20 py-10 text-center text-xs text-slate-500">
+  © 2026 — Trabajo, Silencio y Perseverancia
 </footer>
 
-<!-- JS -->
-<script>
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
-
+<script src="assets/js/app-final.js"></script>
 </body>
 </html>
