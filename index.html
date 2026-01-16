@@ -14,9 +14,6 @@
   <!-- Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
-  <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style-final.css">
 
@@ -44,7 +41,6 @@
 <!-- ================= NAV ================= -->
 <header class="fixed top-0 w-full z-50 bg-darkbg/80 backdrop-blur border-b border-gold/20">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
     <div class="flex items-center gap-4">
       <img src="assets/img/WhatsApp Image 2026-01-08 at 7.33.25 PM.jpeg"
            class="h-12 w-12 rounded-full border-2 border-gold object-cover"
@@ -115,6 +111,12 @@
   </p>
 </section>
 
+<!-- ================= ACTIVIDADES ================= -->
+<section id="actividades" class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Actividades</h2>
+  <div id="actividades-grid" class="grid md:grid-cols-3 gap-8"></div>
+</section>
+
 <footer class="border-t border-gold/20 py-10 text-center text-xs text-slate-500">
   © 2026 — Trabajo, Silencio y Perseverancia
 </footer>
@@ -137,7 +139,6 @@
   ];
 
   const tbody = document.getElementById("tenidas-body");
-
   tenidas.forEach(t => {
     const row = document.createElement("tr");
     row.innerHTML = `
@@ -146,6 +147,31 @@
       <td class="py-3">${t.tema}</td>
     `;
     tbody.appendChild(row);
+  });
+
+  // ================= ACTIVIDADES DATA =================
+  const actividades = [
+    { titulo: "Ágape Fraternal de Apertura", fecha: "2024-01-20", descripcion: "Reunión informal de reencuentro post-vacacional.", estado: "Realizado" },
+    { titulo: "Taller de Liderazgo Masónico", fecha: "2024-02-10", descripcion: "Jornada de formación para Maestros Masones.", estado: "Realizado" },
+    { titulo: "Visita al G:. T:. M:.", fecha: "2024-03-02", descripcion: "Recorrido histórico y mantenimiento de espacios.", estado: "En Curso" },
+    { titulo: "Conferencia: Ética y Sociedad", fecha: "2024-03-15", descripcion: "Charla abierta al público invitado.", estado: "Planificado" },
+    { titulo: "Jornada Médica Gratuita", fecha: "2024-04-06", descripcion: "Actividad de beneficencia en la comunidad local.", estado: "Planificado" },
+    { titulo: "Torneo de Ajedrez 'Luz 81'", fecha: "2024-05-18", descripcion: "Competencia amistosa entre logias.", estado: "Planificado" },
+    { titulo: "Banquete Solsticial", fecha: "2024-06-21", descripcion: "Celebración tradicional del solsticio de verano.", estado: "Planificado" },
+    { titulo: "Cierre de Semestre", fecha: "2024-07-15", descripcion: "Evaluación de trabajos y ágape de despedida.", estado: "Planificado" }
+  ];
+
+  const grid = document.getElementById("actividades-grid");
+
+  actividades.forEach(a => {
+    const card = document.createElement("div");
+    card.className = "bg-darkbg/90 p-6 rounded-lg shadow-lg border border-gold/30 hover:scale-105 transform transition-all";
+    card.innerHTML = `
+      <h3 class="text-gold font-bold mb-2">${a.titulo}</h3>
+      <p class="text-xs text-slate-400 mb-2">${a.fecha} — ${a.estado}</p>
+      <p class="text-sm text-slate-300">${a.descripcion}</p>
+    `;
+    grid.appendChild(card);
   });
 </script>
 
