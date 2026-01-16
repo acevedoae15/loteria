@@ -1,319 +1,195 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Logia Masónica – Portal Institucional</title>
+  <meta charset="UTF-8">
+  <title>Resp:. Logia Luz de la Fraternidad N°81 – Oriente de Maturín</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Portal institucional de la Logia. Información oficial, tenidas, trabajos, actividades y estructura organizativa.">
-<meta name="keywords" content="Logia, Masonería, Tenidas, Gran Logia, REAA, Venezuela">
-<meta name="author" content="Logia">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-:root{
-  --negro:#0b0b0b;
-  --gris:#1a1a1a;
-  --blanco:#f2f2f2;
-  --plateado:#cfcfcf;
-}
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: "Times New Roman", serif;
-}
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
-body{
-  background: var(--negro);
-  color: var(--blanco);
-  line-height:1.6;
-}
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-/* HERO */
-.hero{
-  position:relative;
-  width:100%;
-  min-height:100vh;
-  overflow:hidden;
-}
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style-final.css">
 
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.15),
-      rgba(0,0,0,0.95)
-    ),
-    url("assets/img/logia.jpg");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  filter: grayscale(100%) contrast(180%) brightness(85%);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:2rem;
-}
-
-.hero h1{
-  font-size:clamp(2.2rem,5vw,3.5rem);
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-}
-
-.hero p{
-  max-width:700px;
-  margin-top:1.5rem;
-  color:var(--plateado);
-  font-size:1.1rem;
-}
-
-/* SECCIONES */
-section{
-  padding:4rem 1.5rem;
-  max-width:1100px;
-  margin:auto;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:3rem;
-}
-
-.section-title h2{
-  font-size:2rem;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-}
-
-.section-title span{
-  display:block;
-  margin-top:0.5rem;
-  color:var(--plateado);
-  font-size:0.9rem;
-}
-
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:2rem;
-}
-
-.card{
-  background:linear-gradient(180deg,#111,#050505);
-  border:1px solid #222;
-  padding:2rem;
-  text-align:center;
-  transition:all .3s ease;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  border-color:var(--plateado);
-}
-
-.card h3{
-  letter-spacing:0.1em;
-  margin-bottom:1rem;
-}
-
-.card p{
-  color:#bdbdbd;
-  font-size:0.95rem;
-}
-
-/* TENIDAS */
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:2rem;
-}
-
-th,td{
-  border:1px solid #333;
-  padding:0.8rem;
-  text-align:left;
-}
-
-th{
-  background:#111;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-}
-
-tr:nth-child(even){
-  background:#0f0f0f;
-}
-
-.note{
-  margin-top:1rem;
-  font-size:0.85rem;
-  color:#aaa;
-}
-
-/* FOOTER */
-footer{
-  border-top:1px solid #222;
-  padding:2rem 1rem;
-  text-align:center;
-  color:#777;
-  font-size:0.85rem;
-}
-</style>
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gold: '#A38B57',
+            darkbg: '#121A1A',
+            surfacedark: '#1B2626'
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body>
+<body class="bg-darkbg text-slate-200 font-display overflow-x-hidden">
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Logia Simbólica</h1>
-    <p>
-      Portal institucional reservado. Información oficial de trabajos,
-      estructura organizativa, tenidas y actividades bajo los principios
-      tradicionales del Rito Escocés Antiguo y Aceptado.
+<!-- ================= NAV ================= -->
+<header class="fixed top-0 w-full z-50 bg-darkbg/80 backdrop-blur border-b border-gold/20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <div class="flex items-center gap-4">
+      <img
+        src="assets/img/WhatsApp Image 2026-01-08 at 7.33.25 PM.jpeg"
+        class="h-12 w-12 rounded-full border-2 border-gold object-cover"
+        alt="Logia Luz de la Fraternidad Nº81"
+      >
+      <span class="uppercase tracking-widest text-xs font-bold">
+        Luz de la Fraternidad Nº81
+      </span>
+    </div>
+
+    <nav class="hidden md:flex gap-8 text-xs uppercase tracking-widest">
+      <a href="#institucion" class="hover:text-gold">Institución</a>
+      <a href="#historia" class="hover:text-gold">Historia</a>
+      <a href="#tenidas" class="hover:text-gold">Tenidas</a>
+      <a href="#comite" class="hover:text-gold">Comité</a>
+      <a href="#actividades" class="hover:text-gold">Actividades</a>
+      <a href="#contacto" class="hover:text-gold">Contacto</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="relative min-h-screen flex items-center pt-28">
+
+  <!-- Imagen -->
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style="background-image:url('assets/img/tenidas.jpeg');">
+  </div>
+
+  <!-- Blanco y negro + contraste -->
+  <div class="absolute inset-0 bg-white/70 mix-blend-overlay"></div>
+  <div class="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
+
+  <!-- Degradado -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-darkbg"></div>
+
+  <!-- Contenido -->
+  <div class="relative max-w-4xl px-6">
+    <span class="uppercase tracking-widest text-xs text-gold">
+      A∴ L∴ G∴ D∴ G∴ A∴ D∴ U∴
+    </span>
+
+    <h1 class="text-4xl md:text-6xl font-extrabold mt-4 mb-6">
+      Respetable Logia<br>
+      <span class="text-gold">Luz de la Fraternidad Nº81</span>
+    </h1>
+
+    <p class="text-slate-300 max-w-xl">
+      Rito Escocés Antiguo y Aceptado · Jurisdicción de la Muy Resp:. Gran Logia
+      de la República de Venezuela
     </p>
   </div>
-</div>
 
-<!-- INSTITUCIONAL -->
-<section>
-  <div class="section-title">
-    <h2>Institución</h2>
-    <span>Fundamentos y propósito</span>
+  <!-- 3D -->
+  <div
+    id="canvas-3d"
+    class="absolute right-0 bottom-0 w-[400px] h-[400px] hidden md:block">
   </div>
+</section>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Misión</h3>
-      <p>
-        Formar hombres libres y de buenas costumbres, comprometidos
-        con el perfeccionamiento moral, intelectual y espiritual.
-      </p>
-    </div>
+<!-- ================= INSTITUCIÓN ================= -->
+<section id="institucion" class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Nuestra Institución</h2>
 
-    <div class="card">
-      <h3>Visión</h3>
-      <p>
-        Consolidarnos como una Logia referente en disciplina,
-        tradición, estudio y trabajo masónico regular.
-      </p>
-    </div>
-
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
     <div class="card">
       <h3>Principios</h3>
-      <p>
-        Libertad, igualdad y fraternidad, ejercidas con discreción,
-        orden y respeto a los landmarks.
-      </p>
+      <p>Fraternidad, respeto y rectitud como base inquebrantable.</p>
+    </div>
+
+    <div class="card">
+      <h3>Valores</h3>
+      <p>Integridad, disciplina y servicio a la humanidad.</p>
+    </div>
+
+    <div class="card">
+      <h3>Objetivos</h3>
+      <p>Formación del carácter a través del estudio simbólico.</p>
     </div>
   </div>
 </section>
 
-<!-- COMITÉS Y ACTIVIDADES -->
-<section>
-  <div class="section-title">
-    <h2>Estructura</h2>
-    <span>Organización y desarrollo</span>
-  </div>
+<!-- ================= HISTORIA ================= -->
+<section id="historia" class="bg-surfacedark py-24">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12 text-center">Historia</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Comités</h3>
-      <p>
-        Órganos de trabajo encargados de instrucción, beneficencia,
-        administración y ceremonial.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Actividades</h3>
-      <p>
-        Tenidas, trabajos de arquitectura, instrucción ritual
-        y formación continua.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Modernización</h3>
-      <p>
-        Migrar timeline animado, cards premium, optimización SEO
-        institucional y versión móvil de Gran Logia.
-      </p>
-    </div>
+    <ul class="space-y-8">
+      <li><strong class="text-gold">1971</strong> – Fundación y constitución.</li>
+      <li><strong class="text-gold">1985</strong> – Consolidación institucional.</li>
+      <li><strong class="text-gold">Actualidad</strong> – Trabajo ininterrumpido.</li>
+    </ul>
   </div>
 </section>
 
-<!-- TENIDAS -->
-<section>
-  <div class="section-title">
-    <h2>Tenidas</h2>
-    <span>Calendario de trabajos</span>
-  </div>
+<!-- ================= TENIDAS ================= -->
+<section id="tenidas" class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Tenidas</h2>
 
-  <table>
+  <table class="w-full text-sm border-collapse">
     <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Tipo</th>
-        <th>Tema / Descripción</th>
+      <tr class="border-b border-gold/30">
+        <th class="py-3 text-left">Fecha</th>
+        <th class="py-3 text-left">Tipo</th>
+        <th class="py-3 text-left">Tema</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>2024-02-15</td>
-        <td>Tenida Ordinaria</td>
-        <td>Lectura y aprobación de actas</td>
-      </tr>
-      <tr>
-        <td>2024-02-22</td>
-        <td>Tenida de Instrucción</td>
-        <td>Simbolismo del Primer Grado</td>
-      </tr>
-      <tr>
-        <td>2024-02-29</td>
-        <td>Tenida Ordinaria</td>
-        <td>Discusión administrativa</td>
-      </tr>
-      <tr>
-        <td>2024-03-07</td>
-        <td>Tenida Magna de Iniciación</td>
-        <td>Recepción de profanos</td>
-      </tr>
-      <tr>
-        <td>2024-03-14</td>
-        <td>Tenida Ordinaria</td>
-        <td>Trabajos de arquitectura</td>
-      </tr>
-      <tr>
-        <td>2024-03-21</td>
-        <td>Tenida de Instrucción</td>
-        <td>Historia del REAA en Venezuela</td>
-      </tr>
-    </tbody>
+    <tbody id="tenidas-body"></tbody>
   </table>
+</section>
 
-  <div class="note">
-    * Información sujeta a confirmación interna. Solo para miembros regulares.
+<!-- ================= COMITÉ ================= -->
+<section id="comite" class="bg-surfacedark py-24">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-12">Comité Familiar y AJEF</h2>
+    <p class="text-slate-300 max-w-3xl mx-auto">
+      Integración familiar, formación ética y desarrollo de la juventud.
+    </p>
   </div>
 </section>
 
-<footer>
-  © Logia Simbólica – Documento institucional reservado
+<!-- ================= ACTIVIDADES ================= -->
+<section id="actividades" class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Actividades</h2>
+  <div id="actividades-grid" class="grid md:grid-cols-3 gap-8"></div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section id="contacto" class="bg-surfacedark py-24">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+    <p class="text-slate-400">
+      Gran Templo Masónico · Jesuitas a Maturín · Venezuela
+    </p>
+  </div>
+</section>
+
+<footer class="border-t border-gold/20 py-10 text-center text-xs text-slate-500">
+  © 2026 — Trabajo, Silencio y Perseverancia
 </footer>
 
+<script src="assets/js/app-final.js"></script>
 </body>
 </html>
